@@ -17,7 +17,7 @@ export const registerNewUser = async ({ username, email, password }: User) => {
 
 export const LoginUser = async ({ email, password }: User) => {
   const user = await userModel.findOne({ email });
-  if(!user) return "Usuario no registrado"
+  if(!user) return "Credenciales incorrectas"
   if (user) {
     const isCorrectPassword = await verified(password, user.password);
     if (isCorrectPassword) {
